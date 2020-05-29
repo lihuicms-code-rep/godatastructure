@@ -18,7 +18,14 @@ func main() {
 	//testRemoveRepeatInSortedLinkList()
 	//testLinkListSum1()
 	//testLinkListSum2()
-	testReSortLinkList()
+	//testReSortLinkList()
+	//testKthNode()
+	//testHasCircle()
+	//testPairReverse()
+	//testKGroupReverse()
+	//testMergeTwoLinkList()
+	//testRemoveNode()
+	TestGetIntersectionNode()
 }
 
 //测试反转链表
@@ -260,4 +267,248 @@ func testReSortLinkList() {
 	linklist.ReorderList(head1)
 	fmt.Println("******重排链表************")
 	head1.Print()
+}
+
+
+//测试链表的倒数第k个结点
+func testKthNode() {
+	head1 := linklist.NewListNode(1)
+	node2 := linklist.NewListNode(2)
+	node3 := linklist.NewListNode(3)
+	node4 := linklist.NewListNode(4)
+	node5 := linklist.NewListNode(5)
+	node6 := linklist.NewListNode(6)
+	node7 := linklist.NewListNode(7)
+	head1.Next = node2
+	node2.Next = node3
+	node3.Next = node4
+	node4.Next = node5
+	node5.Next = node6
+	node6.Next = node7
+
+	fmt.Println("******当前链表情况********")
+	head1.Print()
+
+	val1 := linklist.KthToLast(head1, 1)
+	fmt.Printf("倒数第一个结点为:%d\n", val1)
+
+	val2 := linklist.KthToLast(head1, 2)
+	fmt.Printf("倒数第二个结点为:%d\n", val2)
+
+	val3 := linklist.KthToLast(head1, 3)
+	fmt.Printf("倒数第三个结点为:%d\n", val3)
+
+	val4 := linklist.KthToLast(head1, 4)
+	fmt.Printf("倒数第四个结点为:%d\n", val4)
+
+	val5 := linklist.KthToLast(head1, 5)
+	fmt.Printf("倒数第四个结点为:%d\n", val5)
+
+	val6 := linklist.KthToLast(head1, 6)
+	fmt.Printf("倒数第六个结点为:%d\n", val6)
+
+	val7 := linklist.KthToLast(head1, 7)
+	fmt.Printf("倒数第七个结点为:%d\n", val7)
+
+	val8 := linklist.KthToLast(head1, 8)
+	fmt.Printf("倒数第七个结点为:%d\n", val8)
+}
+
+//测试链表中是否有环
+func testHasCircle() {
+	head1 := linklist.NewListNode(1)
+	node2 := linklist.NewListNode(2)
+	node3 := linklist.NewListNode(3)
+	node4 := linklist.NewListNode(4)
+	node5 := linklist.NewListNode(5)
+	node6 := linklist.NewListNode(6)
+	node7 := linklist.NewListNode(7)
+	head1.Next = node2
+	node2.Next = node3
+	node3.Next = node4
+	node4.Next = node5
+	node5.Next = node6
+	node6.Next = node7
+
+	fmt.Println("******head1当前链表情况********")
+	head1.Print()
+
+	hasC := linklist.HasCycle(head1)
+	fmt.Printf("方法1测试 head1 是否有环:%t\n", hasC)
+
+	hasC = linklist.HasCycle2(head1)
+	fmt.Printf("方法2测试 head1 是否有环:%t\n", hasC)
+
+	head2 := linklist.NewListNode(1)
+	node22 := linklist.NewListNode(2)
+	node23 := linklist.NewListNode(3)
+	node24 := linklist.NewListNode(4)
+	node25 := linklist.NewListNode(5)
+	node26 := linklist.NewListNode(6)
+	node27 := linklist.NewListNode(7)
+	head2.Next = node22
+	node22.Next = node23
+	node23.Next = node24
+	node24.Next = node25
+	node25.Next = node26
+	node26.Next = node27
+	node27.Next = node25
+
+	fmt.Println("******head2 当前链表情况********")
+	hasC = linklist.HasCycle(head2)
+	fmt.Printf("方法1 测试 head2 是否有环:%t\n", hasC)
+
+	hasC = linklist.HasCycle2(head2)
+	fmt.Printf("方法2 测试 head2 是否有环:%t\n", hasC)
+}
+
+//测试两两交换
+func testPairReverse() {
+	head1 := linklist.NewListNode(1)
+	node2 := linklist.NewListNode(2)
+	node3 := linklist.NewListNode(3)
+	node4 := linklist.NewListNode(4)
+	node5 := linklist.NewListNode(5)
+	node6 := linklist.NewListNode(6)
+	node7 := linklist.NewListNode(7)
+	head1.Next = node2
+	node2.Next = node3
+	node3.Next = node4
+	node4.Next = node5
+	node5.Next = node6
+	node6.Next = node7
+
+	fmt.Println("******当前链表情况********")
+	head1.Print()
+
+	newHead := linklist.SwapPairs(head1)
+	fmt.Println("******两两交换后的链表情况********")
+	newHead.Print()
+}
+
+//测试K个一组进行翻转
+func testKGroupReverse() {
+	head1 := linklist.NewListNode(1)
+	node2 := linklist.NewListNode(2)
+	node3 := linklist.NewListNode(3)
+	node4 := linklist.NewListNode(4)
+	node5 := linklist.NewListNode(5)
+	node6 := linklist.NewListNode(6)
+	node7 := linklist.NewListNode(7)
+	head1.Next = node2
+	node2.Next = node3
+	node3.Next = node4
+	node4.Next = node5
+	node5.Next = node6
+	node6.Next = node7
+
+	fmt.Println("******当前链表情况********")
+	head1.Print()
+
+	newHead := linklist.ReverseKGroup(head1, 2)
+	fmt.Println("******两个一组进行交换后的链表情况********")
+	newHead.Print()
+}
+
+//测试合并两个有序链表
+func testMergeTwoLinkList() {
+	head1 := linklist.NewListNode(1)
+	node2 := linklist.NewListNode(2)
+	node3 := linklist.NewListNode(4)
+	head1.Next = node2
+	node2.Next = node3
+	fmt.Println("**********有序链表1*************")
+	head1.Print()
+
+	head2 := linklist.NewListNode(1)
+	node4 := linklist.NewListNode(3)
+	node5 := linklist.NewListNode(5)
+	node6 := linklist.NewListNode(9)
+	head2.Next = node4
+	node4.Next = node5
+	node5.Next = node6
+
+	fmt.Println("**********有序链表2*************")
+	head2.Print()
+
+	head3 := linklist.MergeTwoLists(head1, head2)
+	fmt.Println("**********合并后的链表***********")
+	head3.Print()
+}
+
+//测试删除结点
+func testRemoveNode() {
+	head1 := linklist.NewListNode(1)
+	node2 := linklist.NewListNode(2)
+	node3 := linklist.NewListNode(3)
+	node4 := linklist.NewListNode(4)
+	node5 := linklist.NewListNode(5)
+	node6 := linklist.NewListNode(6)
+	node7 := linklist.NewListNode(7)
+	head1.Next = node2
+	node2.Next = node3
+	node3.Next = node4
+	node4.Next = node5
+	node5.Next = node6
+	node6.Next = node7
+
+	fmt.Println("******当前链表情况********")
+	head1.Print()
+
+	linklist.RemoveNode(node5)
+	fmt.Println("******删除结点5后当前链表情况********")
+	head1.Print()
+}
+
+//测试单链表是否交叉,并返回交叉点
+func TestGetIntersectionNode() {
+	head1 := linklist.NewListNode(1)
+	node2 := linklist.NewListNode(2)
+	node3 := linklist.NewListNode(3)
+	head1.Next = node2
+	node2.Next = node3
+
+	head2 := linklist.NewListNode(4)
+	node4 := linklist.NewListNode(5)
+	head2.Next = node4
+
+	node5 := linklist.NewListNode(6)
+	node6 := linklist.NewListNode(7)
+	node7 := linklist.NewListNode(8)
+	node8 := linklist.NewListNode(9)
+	node5.Next = node6
+	node6.Next = node7
+	node7.Next = node8
+
+	node3.Next = node5
+	node4.Next = node5
+
+	fmt.Println("****第一条链表********")
+	head1.Print()
+
+	fmt.Println("****第二条链表********")
+	head2.Print()
+
+	iNode := linklist.GetIntersectionNode(head1, head2)
+	fmt.Printf("intersection node:%v\n", iNode)
+
+	//
+	head3 := linklist.NewListNode(1)
+	node31 := linklist.NewListNode(2)
+	node32 := linklist.NewListNode(3)
+	head3.Next = node31
+	node31.Next = node32
+
+	fmt.Println("*******第三条链表******")
+	head3.Print()
+
+	fmt.Println("*******第四条链表******")
+	head4 := linklist.NewListNode(1)
+	head4.Print()
+
+	iNode = linklist.GetIntersectionNode(head3, head4)
+	fmt.Printf("intersection node:%v\n", iNode)
+
+
+
 }

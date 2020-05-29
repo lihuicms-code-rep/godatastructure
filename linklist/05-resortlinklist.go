@@ -76,6 +76,10 @@ func ReorderList(head *ListNode)  {
 		if cur1.Next == nil {
 			break
 		}
+
+		if cur2.Next == nil {
+			break
+		}
 		tmp := cur1.Next
 		cur1.Next = cur2
 		cur1 = tmp
